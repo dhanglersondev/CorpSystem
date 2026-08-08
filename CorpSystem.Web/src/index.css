@@ -5,6 +5,9 @@
   --color-verde-principal: #15803d;
   --color-verde-secundario: #22c55e;
   --color-verde-claro: #86efac;
+  --color-vermelho-principal: #dc2626;
+  --color-vermelho-secundario: #ef4444;
+  --color-vermelho-claro: #fca5a5;
   --color-borda: #d1d5db;
   --color-branco: #ffffff;
 }
@@ -22,5 +25,6 @@ input[type="submit"] {
    background-color: var(--color-verde-principal);
    color: var(--color-verde-secundario);
    border-color: var(--color-borda);
-   etc.
+   background-color: var(--color-vermelho-principal);
+   color: var(--color-vermelho-secundario);
 */

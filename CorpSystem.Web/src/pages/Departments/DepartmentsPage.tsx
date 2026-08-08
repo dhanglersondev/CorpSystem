@@ -1,24 +1,55 @@
 
-import { useRef } from "react"
-import Form from "../../components/Form/Form"
-import FormField from "../../components/Form/FormField"
-import Input from "../../components/Form/Input"
-import Select from "../../components/Form/Select"
-import Header from "../../components/Header/Header"
-import Button from "../../components/Button/Button"
-import { PlusIcon, PencilIcon, TrashIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
+import { useRef } from "react";
+import Form from "../../components/Form/Form";
+import FormField from "../../components/Form/FormField";
+import Input from "../../components/Form/Input";
+import Select from "../../components/Form/Select";
+import Header from "../../components/Header/Header";
+import Button from "../../components/Button/Button";
+import DataTable from "../../components/DataTable";
+import {
+  PlusIcon,
+  PencilIcon,
+  TrashIcon,
+  ArrowPathIcon,
+} from "@heroicons/react/24/outline";
+import { departmentColumns } from "./departmentColumns";
+
+// Styling for color variables comes from src/index.css
 
 const statusOptions = [
   { value: "ativo", label: "Ativo" },
   { value: "inativo", label: "Inativo" },
-]
+];
+
+const departments = [
+  {
+    id: 1,
+    sigla: "TI",
+    name: "Tecnologia da Informação",
+    active: true,
+  },
+  {
+    id: 2,
+    sigla: "FIN",
+    name: "Financeiro",
+    active: true,
+  },
+  {
+    id: 3,
+    sigla: "MKT",
+    name: "Marketing",
+    active: false,
+  },
+];
 
 export default function DepartmentsPage() {
-  const siglaInputRef = useRef<HTMLInputElement>(null)
+  const siglaInputRef = useRef<HTMLInputElement>(null);
 
+  // Ao clicar em "Novo", focar em "Sigla"
   const handleNovoClick = () => {
-    siglaInputRef.current?.focus()
-  }
+    siglaInputRef.current?.focus();
+  };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 sm:p-8">
@@ -27,15 +58,48 @@ export default function DepartmentsPage() {
         subtitle="Gerencie os departamentos da sua organização"
         icon={
           <div className="flex-shrink-0">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
-              <rect x="6" y="16" width="28" height="20" rx="4" fill="var(--color-verde-principal)" />
-              <rect x="22" y="6" width="28" height="20" rx="4" fill="var(--color-verde-secundario)" />
-              <rect x="16" y="30" width="28" height="20" rx="4" fill="var(--color-verde-claro)" />
-              <circle cx="20" cy="26" r="3" fill="var(--color-verde-principal)" />
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              aria-hidden="true"
+            >
+              <rect
+                x="6"
+                y="16"
+                width="28"
+                height="20"
+                rx="4"
+                fill="var(--color-verde-principal)"
+              />
+              <rect
+                x="22"
+                y="6"
+                width="28"
+                height="20"
+                rx="4"
+                fill="var(--color-verde-secundario)"
+              />
+              <rect
+                x="16"
+                y="30"
+                width="28"
+                height="20"
+                rx="4"
+                fill="var(--color-verde-claro)"
+              />
+              <circle
+                cx="20"
+                cy="26"
+                r="3"
+                fill="var(--color-verde-principal)"
+              />
             </svg>
           </div>
         }
       />
+
       <Form>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
           <div className="w-full sm:w-32">
@@ -45,14 +109,18 @@ export default function DepartmentsPage() {
                 name="sigla"
                 maxLength={10}
                 placeholder="ABC"
-                // @ts-expect-error: TypeScript doesn't allow ref as prop but this works
+                // @ts-expect-error
                 ref={siglaInputRef as any}
               />
             </FormField>
           </div>
           <div className="w-full flex-1">
             <FormField label="Departamento" htmlFor="nome" required>
-              <Input id="nome" name="nome" placeholder="Nome do departamento" />
+              <Input
+                id="nome"
+                name="nome"
+                placeholder="Nome do departamento"
+              />
             </FormField>
           </div>
           <div className="w-full sm:w-36">
@@ -67,7 +135,11 @@ export default function DepartmentsPage() {
           </div>
         </div>
         <div className="flex flex-row gap-3 pt-4 sm:justify-center">
-          <Button type="button" icon={<PlusIcon />} onClick={handleNovoClick}>
+          <Button
+            type="button"
+            icon={<PlusIcon />}
+            onClick={handleNovoClick}
+          >
             <span className="hidden sm:inline">Novo</span>
           </Button>
           <Button type="submit" icon={<PencilIcon />}>
@@ -81,6 +153,12 @@ export default function DepartmentsPage() {
           </Button>
         </div>
       </Form>
+
+      <DataTable
+        data={departments}
+        columns={departmentColumns}
+        emptyMessage="Nenhum departamento cadastrado."
+      />
     </div>
-  )
+  );
 }
