@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Definição de variáveis de cores reutilizáveis baseadas na tela de Login */
+:root {
+  --color-verde-principal: #15803d;
+  --color-verde-secundario: #22c55e;
+  --color-verde-claro: #86efac;
+  --color-borda: #d1d5db;
+  --color-branco: #ffffff;
+}
+
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Exemplo de uso das variáveis de cores personalizadas para fácil referência 
+   Use estas variáveis em seu CSS customizado ou em utilitários personalizados do Tailwind quando necessário:
+
+   background-color: var(--color-verde-principal);
+   color: var(--color-verde-secundario);
+   border-color: var(--color-borda);
+   etc.
+*/
