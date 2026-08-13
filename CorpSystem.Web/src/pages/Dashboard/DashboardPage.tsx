@@ -60,7 +60,7 @@ export default function DashboardPage() {
   const ultimaAtualizacao = `${now.toLocaleDateString("pt-BR")} ${now.toLocaleTimeString("pt-BR")}`;
 
   return (
-    <main className="max-w-5xl mx-auto px-2 sm:px-6 py-8 sm:py-12">
+    <main className="max-w-6xl mx-auto px-2 sm:px-6 py-8 sm:py-12">
       <header className="mb-8 flex flex-col gap-2 sm:gap-0 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl sm:text-4xl font-bold text-[var(--color-verde-principal)] mb-1">

@@ -63,7 +63,7 @@ export default function PositionsPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 sm:p-8">
+    <div className="max-w-6xl mx-auto px-4 py-6 sm:p-8">
       <Header
         title="Cargos"
         subtitle="Gerencie os cargos da sua organização"

@@ -57,6 +57,22 @@ export const employeesColumns: DataTableColumn<Employee>[] = [
         : "",
   },
   {
+    key: "cargo",
+    header: "Cargo",
+    render: (item) => {
+      const cargoOption = cargoOptions.find((c) => c.value === item.cargo);
+      return cargoOption ? cargoOption.label : "";
+    },
+  },
+  {
+    key: "departamento",
+    header: "Departamento",
+    render: (item) => {
+      const departamentoOption = departamentoOptions.find((d) => d.value === item.departamento);
+      return departamentoOption ? departamentoOption.label : "";
+    },
+  },
+  {
     key: "status",
     header: "Status",
     render: (item) => {
@@ -78,22 +94,6 @@ export const employeesColumns: DataTableColumn<Employee>[] = [
           {statusOption ? statusOption.label : ""}
         </span>
       );
-    },
-  },
-  {
-    key: "cargo",
-    header: "Cargo",
-    render: (item) => {
-      const cargoOption = cargoOptions.find((c) => c.value === item.cargo);
-      return cargoOption ? cargoOption.label : "";
-    },
-  },
-  {
-    key: "departamento",
-    header: "Departamento",
-    render: (item) => {
-      const departamentoOption = departamentoOptions.find((d) => d.value === item.departamento);
-      return departamentoOption ? departamentoOption.label : "";
     },
   },
 ];

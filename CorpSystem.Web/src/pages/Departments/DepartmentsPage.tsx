@@ -52,7 +52,7 @@ export default function DepartmentsPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 sm:p-8">
+    <div className="max-w-6xl mx-auto px-4 py-6 sm:p-8">
       <Header
         title="Departamentos"
         subtitle="Gerencie os departamentos da sua organização"

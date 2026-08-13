@@ -43,7 +43,7 @@ const initialEmployees: Employee[] = [
 
 export default function EmployeesPage() {
   const nomeInputRef = useRef<HTMLInputElement>(null);
-  const [employees, setEmployees] = useState<Employee[]>(initialEmployees);
+  const [employees] = useState<Employee[]>(initialEmployees);
 
   // Exemplo: foco ao clicar em "Novo"
   const handleNovoClick = () => {
@@ -53,7 +53,7 @@ export default function EmployeesPage() {
   // [Opcional] Eventos dos botões, para completar futuramente
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 sm:p-8">
+    <div className="max-w-6xl mx-auto px-4 py-6 sm:p-8">
       <Header
         title="Funcionários"
         subtitle="Gerencie o cadastro de funcionários na sua organização"
