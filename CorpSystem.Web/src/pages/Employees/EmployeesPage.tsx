@@ -1,41 +1,56 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Form from "../../components/Form/Form";
 import FormField from "../../components/Form/FormField";
 import Input from "../../components/Form/Input";
 import Select from "../../components/Form/Select";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
+import DataTable from "../../components/DataTable";
 import { PlusIcon, PencilIcon, TrashIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
+import {
+  statusOptions,
+  cargoOptions,
+  departamentoOptions,
+  employeesColumns,
+  type Employee,
+} from "./employeesColumns";
 
-// Opções de status possíveis para um funcionário
-const statusOptions = [
-  { value: "ativo", label: "Ativo" },
-  { value: "inativo", label: "Inativo" },
-];
-
-// Opções fictícias para cargos e departamentos - substituir pelo fetch real no futuro
-const departamentoOptions = [
-  { value: "", label: "Selecione" },
-  { value: "dp", label: "Departamento Pessoal" },
-  { value: "rh", label: "Recursos Humanos" },
-  { value: "fin", label: "Financeiro" },
-  { value: "ope", label: "Operações" },
-];
-
-const cargoOptions = [
-  { value: "", label: "Selecione" },
-  { value: "analista", label: "Analista" },
-  { value: "gestor", label: "Gestor" },
-  { value: "coordenador", label: "Coordenador" },
-  { value: "assistente", label: "Assistente" },
+// Dados mock para demonstração inicial
+const initialEmployees: Employee[] = [
+  {
+    id: 1,
+    nome: "Maria Oliveira",
+    email: "maria.oliveira@email.com",
+    cpf: "345.321.654-00",
+    dataContratacao: "2023-01-15",
+    status: "ativo",
+    cargo: "analista",
+    departamento: "rh",
+    active: true,
+  },
+  {
+    id: 2,
+    nome: "João Silva",
+    email: "joao.silva@email.com",
+    cpf: "123.456.789-00",
+    dataContratacao: "2022-10-01",
+    status: "inativo",
+    cargo: "gestor",
+    departamento: "fin",
+    active: false,
+  },
 ];
 
 export default function EmployeesPage() {
   const nomeInputRef = useRef<HTMLInputElement>(null);
+  const [employees, setEmployees] = useState<Employee[]>(initialEmployees);
 
+  // Exemplo: foco ao clicar em "Novo"
   const handleNovoClick = () => {
     nomeInputRef.current?.focus();
   };
+
+  // [Opcional] Eventos dos botões, para completar futuramente
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 sm:p-8">
@@ -145,6 +160,15 @@ export default function EmployeesPage() {
           </Button>
         </div>
       </Form>
+
+      {/* Tabela de funcionários */}
+      <div className="pt-10">
+        <DataTable
+          data={employees}
+          columns={employeesColumns}
+          emptyMessage="Nenhum funcionário cadastrado."
+        />
+      </div>
     </div>
   );
 }
